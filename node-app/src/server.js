@@ -2,6 +2,7 @@ const express = require('express');
 const exphbs = require("express-handlebars");
 const path = require('path');
 const hbs = require('hbs');
+const morgan = require('morgan');
 
 
 //Initializations
@@ -19,7 +20,9 @@ app.engine('.hbs',exphbs.engine({
 app.set('view engine','.hbs')
 
 //Middlewares
+app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));//este es para que cualquier data que se registre por medio de un formulario sea json
+
 
 //Global Variables
 

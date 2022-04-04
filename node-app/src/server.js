@@ -25,9 +25,8 @@ app.use(express.urlencoded({extended:false}));//este es para que cualquier data 
 
 
 //Routes
-app.get('/',(req,res,next) => {
-    res.render('index');
-})
+app.use(require('./routes/index.routes'));
+app.use(require('./routes/notes.routes'));
 
 
 //Static Files

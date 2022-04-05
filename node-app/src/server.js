@@ -3,6 +3,7 @@ const exphbs = require("express-handlebars");
 const path = require('path');
 const hbs = require('hbs');
 const morgan = require('morgan');
+const methodOverride = require('method-override');
 
 
 //Initializations
@@ -22,7 +23,7 @@ app.set('view engine','.hbs')
 //Middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));//este es para que cualquier data que se registre por medio de un formulario sea json
-
+app.use(methodOverride('_method'));
 
 //Global Variables
 

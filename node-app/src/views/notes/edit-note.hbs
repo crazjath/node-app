@@ -1,19 +1,23 @@
 <div class="flex justify-center">
   <div class="mt-10 block max-w-sm rounded-lg bg-white text-center shadow-lg">
-    <div class="border-b border-gray-300 py-3 px-6">New Note</div>
+    <div class="border-b border-gray-300 py-3 px-6">Edit Note</div>
 
-    <form action="/notes/new-note" method="POST">
+    <form action="/notes/edit/{{note._id}}?_method=PUT" method="POST">
+    <input type="hidden" name="_method" value="PUT">
       <div class="p-6">
         <div>
           <input class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none" 
-          type="text" placeholder="Title" name="title" autofocus/>
+          type="text" placeholder="Title" name="title" 
+          value="{{note.title}}"
+          autofocus/>
         </div>
         <div>
           <textarea class="form-control mt-2 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-           placeholder="Description" name="description"></textarea>
+           placeholder="Description" name="description">{{note.description}}
+           </textarea>
         </div>
         <div>
-          <button 
+          <button type="submit"
           class="mt-2 inline-flex items-center rounded-lg bg-blue-700 py-2 px-4 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
           Save Note
           </button>

@@ -10,6 +10,7 @@ notesCtrl.createNewNote = async(req,res) => {
     const newNote = new Note({ title, description});
     await newNote.save();
 
+    req.flash('success_msg', 'Note added succesfully'); 
     res.redirect('/notes')
 }
 
@@ -26,11 +27,14 @@ notesCtrl.renderEditForm = async (req, res) => {
 notesCtrl.updateNote = async(req,res) => { 
     const { title, description  } = req.body;
     const note = await Note.findByIdAndUpdate(req.params.id,{ title,description }).lean();
+    
+    req.flash('success_msg', 'Note updated succesfully');
     res.redirect('/notes')
 }
 
 notesCtrl.deleteNote = async(req,res) => { 
     await Note.findByIdAndDelete(req.params.id);
+    req.flash('success_msg', 'Note deleted succesfully');
     res.redirect('/notes')
 }
 

@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Notes App</title>
-</head>
-<body class="bg-teal-300">
-    
+  </head>
+  <body class="bg-teal-300">
     {{>navigation}}
+    <main class="container p-5">
+        {{>message}} 
+        {{{body}}}
+    </main>
 
-    {{{body}}}
-
-</body>
+  </body>
 </html>

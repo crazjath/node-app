@@ -4,6 +4,8 @@ const path = require('path');
 const hbs = require('hbs');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 
 //Initializations
@@ -24,8 +26,23 @@ app.set('view engine','.hbs')
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));//este es para que cualquier data que se registre por medio de un formulario sea json
 app.use(methodOverride('_method'));
+app.use(
+    session({
+      secret: "secret",
+      resave: true,
+      saveUninitialized: true//,
+      //store: MongoStore.create({ mongoUrl: config.MONGODB_URI }),
+    })
+  );
+app.use(flash());
+
 
 //Global Variables
+app.use((req,res,next) => {
+    res.locals.success_msg = req.flash("success_msg");
+
+    next();
+});
 
 
 //Routes

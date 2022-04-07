@@ -1,16 +1,17 @@
-{{#if success_msg}}
-<div class="mt-5 flex justify-between rounded bg-green-600 p-3 text-green-200 shadow-inner w-full">
-    <p class="self-center"><strong>Success </strong> {{success_msg}} </p>
+{{#if error}}
+<div class="mt-5 flex w-full justify-between rounded bg-red-600 p-3 text-red-200 shadow-inner">
+    <p class="self-center"><strong>Danger </strong> {{error}} </p>
     <strong class="align-center alert-del cursor-pointer text-xl">&times;</strong>
 </div>
 {{/if}}
 
-{{#if error_msg}}
+
+{{#each errors}}
 <div class="mt-5 flex w-full justify-between rounded bg-red-600 p-3 text-red-200 shadow-inner">
-    <p class="self-center"><strong>Danger </strong> {{error_msg}} </p>
+    <p class="self-center"><strong>Danger </strong> {{text}} </p>
     <strong class="align-center alert-del cursor-pointer text-xl">&times;</strong>
 </div>
-{{/if}}
+{{/each}}
 
 <!--Script For Close alert-->
 <script>
